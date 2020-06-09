@@ -43,3 +43,6 @@ Desktop.ini
 
 # Pycharm
 .idea/
+
+# sqlite
+db.sqlite3
