@@ -2,3 +2,4 @@ pip
 awscli==1.18.75
 Django==3.0.7
 flake8==3.8.3
+gunicorn==20.0.4
