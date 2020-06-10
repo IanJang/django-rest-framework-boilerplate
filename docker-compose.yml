@@ -1,0 +1,11 @@
+version : '2'
+services:
+  api:
+    image: django-rest-framework-boilerplate/api
+    build:
+      context: .
+      dockerfile : Dockerfile
+    container_name: api
+    command: python manage.py runserver 0.0.0.0:8000
+    ports:
+      - '8000:8000'
