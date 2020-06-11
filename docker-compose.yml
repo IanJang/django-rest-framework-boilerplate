@@ -3,9 +3,9 @@ services:
   api:
     image: django-rest-framework-boilerplate/api
     build:
-      context: .
+      context: ./project_name
       dockerfile : Dockerfile
     container_name: api
-    command: python manage.py runserver 0.0.0.0:8000
+    command: gunicorn project_name.wsgi:application --bind 0.0.0.0:8000
     ports:
       - '8000:8000'
