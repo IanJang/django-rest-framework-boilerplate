@@ -11,3 +11,6 @@ RUN pip install -r requirements.txt
 
 COPY . project_name
 WORKDIR project_name
+
+# collectstatic
+RUN python manage.py collectstatic --noinput

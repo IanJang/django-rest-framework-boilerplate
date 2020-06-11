@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.urls import path, include
 from rest_framework import routers
 from api import views
@@ -12,3 +13,4 @@ urlpatterns = [
     path('', include(router.urls)),
     path('api-auth/', include('rest_framework.urls'))
 ]
+urlpatterns += staticfiles_urlpatterns()
