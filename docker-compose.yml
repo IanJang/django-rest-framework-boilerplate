@@ -1,5 +1,15 @@
-version : '2'
+version : '3'
 services:
+  custom-nginx:
+    image: custom-nginx
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    container_name: custom-nginx
+    ports:
+      - '80:80'
+    depends_on:
+      - api
   api:
     image: django-rest-framework-boilerplate/api
     build:

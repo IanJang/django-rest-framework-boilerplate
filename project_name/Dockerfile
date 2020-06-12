@@ -9,8 +9,8 @@ RUN pip install --upgrade pip
 COPY /requirements/requirements-base.txt requirements.txt
 RUN pip install -r requirements.txt
 
-COPY . project_name
-WORKDIR project_name
+COPY . /usr/src/app
+WORKDIR /usr/src/app
 
 # collectstatic
 RUN python manage.py collectstatic --noinput
