@@ -16,7 +16,6 @@ services:
       context: ./project_name
       dockerfile : Dockerfile
     container_name: api
-    command: gunicorn project_name.wsgi:application --bind 0.0.0.0:8000
     ports:
       - '8000:8000'
     depends_on:
@@ -31,5 +30,5 @@ services:
       - '25432:5432'
     environment:
       - POSTGRES_USER=project_user
-      - POSTGRES_PASSWORD=test
+      - POSTGRES_PASSWORD=Pass1@3
       - POSTGRES_DB=project_db

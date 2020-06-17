@@ -14,6 +14,7 @@ RUN pip install -r requirements.txt
 
 # copy project
 COPY . /usr/src/app
+COPY . /usr/src/app
 
-# collectstatic
-RUN python manage.py collectstatic --noinput
+RUN chmod +x docker-entrypoint.sh
+ENTRYPOINT ./docker-entrypoint.sh
