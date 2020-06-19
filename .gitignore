@@ -46,3 +46,6 @@ Desktop.ini
 
 # sqlite
 db.sqlite3
+
+# Django
+secrets.json
