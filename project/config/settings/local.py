@@ -1,5 +1,7 @@
 from config.settings.base import *
 
+DEBUG = True
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',

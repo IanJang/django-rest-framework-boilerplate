@@ -28,6 +28,9 @@ INSTALLED_APPS = [
 
     # third party
     'rest_framework',
+    'drf_yasg',
+    
+    # app
     'api'
 ]
 
