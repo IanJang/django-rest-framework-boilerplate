@@ -21,17 +21,7 @@ sudo apt -y install docker-ce
 sudo usermod -aG docker "$(whoami)"
 # sudo reboot
 
-# Install aws-cli
-AWSCLI_VERSION=1.18.75
-sudo apt install awscli
-sudo apt-get install python3
-curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
-python3 get-pip.py
-rm get-pip.py
-pip install awscli==${AWSCLI_VERSION} --upgrade
+# Install Docker Compose
+sudo apt-get install docker-compose
 
-# Install Django
-DJANGO_VERSION=3.0.7
-pip install django==${DJANGO_VERSION} --upgrade
-
-# pip freeze > requirements.txt
+pip install -U -r ./project/requirements/requirements-base.txt
