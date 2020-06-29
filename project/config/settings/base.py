@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     # third party
     'rest_framework',
     'drf_yasg',
+    'django_extensions',
 
     # app
     'api'
