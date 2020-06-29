@@ -12,3 +12,6 @@ DATABASES = {
         'PORT': '5432',
     }
 }
+
+# CELERY
+CELERY_BROKER_URL = 'amqp://admin:Pass1@3@rabbitmq:5672//'

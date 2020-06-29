@@ -4,6 +4,10 @@ services:
   api:
     environment:
       - DJANGO_SETTINGS_MODULE=config.settings.local
+    depends_on:
+      - db
+      - rabbitmq
+    command: celery -A config worker -l info
   db:
     image: postgres
     build:
@@ -16,3 +20,14 @@ services:
       - POSTGRES_USER=project_user
       - POSTGRES_PASSWORD=Pass1@3
       - POSTGRES_DB=project_db
+  rabbitmq:
+    build:
+      context: rabbitmq
+      dockerfile: Dockerfile
+    container_name: rabbitmq
+    ports:
+      - 5672:5672
+      - 15672:15672
+    environment:
+      - RABBITMQ_DEFAULT_USER=admin
+      - RABBITMQ_DEFAULT_PASS=Pass1@3
