@@ -1,25 +1,26 @@
 version : '3'
 services:
-  custom-nginx:
+  nginx:
   api:
     environment:
       - DJANGO_SETTINGS_MODULE=config.settings.local
     depends_on:
-      - db
+      - postgres
       - rabbitmq
-  db:
-    image: postgres
+  postgres:
+    image: django-rest-framework-boilerplate/postgres
     build:
-      context: postgresql
+      context: postgres
       dockerfile: Dockerfile
-    container_name: project_db
+    container_name: postgres
     ports:
       - '25432:5432'
     environment:
-      - POSTGRES_USER=project_user
+      - POSTGRES_USER=postgres_user
       - POSTGRES_PASSWORD=Pass1@3
-      - POSTGRES_DB=project_db
+      - POSTGRES_DB=postgres_db
   rabbitmq:
+    image: django-rest-framework-boilerplate/rabbitmq
     build:
       context: rabbitmq
       dockerfile: Dockerfile
@@ -30,17 +31,17 @@ services:
     environment:
       - RABBITMQ_DEFAULT_USER=admin
       - RABBITMQ_DEFAULT_PASS=Pass1@3
-  celery_worker:
-    image: django-rest-framework-boilerplate/celery
+  celery-worker:
+    image: django-rest-framework-boilerplate/celery-worker
     build:
       context: ./project
       dockerfile: Dockerfile
-    container_name: celery_worker
+    container_name: celery-worker
     environment:
       - DJANGO_SETTINGS_MODULE=config.settings.local
       - IS_CELERY_WORKER=true
     depends_on:
       - api
-      - db
+      - postgres
       - rabbitmq
     restart: on-failure

@@ -5,10 +5,10 @@ DEBUG = True
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'project_db',
-        'USER': 'project_user',
+        'NAME': 'postgres_db',
+        'USER': 'postgres_user',
         'PASSWORD': 'Pass1@3',
-        'HOST': 'project_db',
+        'HOST': 'postgres',
         'PORT': '5432',
     }
 }

@@ -1,11 +1,11 @@
 version : '3'
 services:
-  custom-nginx:
-    image: custom-nginx
+  nginx:
+    image: django-rest-framework-boilerplate/nginx
     build:
       context: ./nginx
       dockerfile: Dockerfile
-    container_name: custom-nginx
+    container_name: nginx
     ports:
       - '80:80'
     depends_on:
