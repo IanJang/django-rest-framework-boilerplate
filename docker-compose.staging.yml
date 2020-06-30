@@ -1,0 +1,21 @@
+version : '3'
+services:
+  nginx:
+  api:
+    environment:
+      - DJANGO_SETTINGS_MODULE=config.settings.staging
+    depends_on:
+      - postgres
+      - rabbitmq
+  celery-worker:
+    image: django-rest-framework-boilerplate/celery-worker
+    build:
+      context: ./project
+      dockerfile: Dockerfile
+    container_name: celery-worker
+    environment:
+      - DJANGO_SETTINGS_MODULE=config.settings.staging
+      - IS_CELERY_WORKER=true
+    depends_on:
+      - api
+    restart: on-failure
